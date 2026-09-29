@@ -1,0 +1,20 @@
+%ASA-6-302013: Built outbound TCP connection 12345 for outside:203.0.113.5/80 (203.0.113.5/80) to inside:10.0.0.100/54321 (10.0.0.100/54321)
+2023/10/25 10:00:00,TRAFFIC,192.168.1.10,8.8.8.8,54321,53,udp,allow,50,50,2,Allow-DNS,dns,Trust,Untrust,johndoe,12345
+date=2023-10-25 time=10:00:00 devname=FGT-Branch devid=FGT123456789 logid=0000000013 type=traffic subtype=forward level=notice vd=root srcip=192.168.1.10 srcport=54321 dstip=8.8.8.8 dstport=53 proto=17 action=accept policyid=1 sentbyte=50 rcvdbyte=50 service=DNS
+CEF:0|Security|ThreatManager|1.0|100|Malware Detected|8|src=192.168.1.100 spt=45678 dst=10.0.0.2 dpt=80 proto=TCP act=blocked msg=WannaCry signature match deviceExternalId=FW01 cn1=8
+Oct 25 10:00:00 router1 kernel: [ 1234.567890] Interface eth0 link down
+{"timestamp": "2023-10-25T10:00:00Z", "src_ip": "192.168.1.10", "dst_ip": "8.8.8.8", "src_port": 54321, "dst_port": 53, "protocol": "udp", "action": "allow", "app": "dns"}
+%ASA-4-106023: Deny tcp src outside:203.0.113.50/12345 dst inside:10.0.0.1/443 by access-group "OUTSIDE_IN" [0x0, 0x0]
+2023/10/25 10:01:00,TRAFFIC,10.0.0.5,198.51.100.1,44321,443,tcp,allow,1024,4096,15,Allow-Web,ssl,Trust,Untrust,alice,12346
+date=2023-10-25 time=10:01:00 devname=FGT-Branch devid=FGT123456789 logid=0000000013 type=traffic subtype=forward level=notice vd=root srcip=10.0.0.5 srcport=44321 dstip=198.51.100.1 dstport=443 proto=6 action=accept policyid=2 sentbyte=1024 rcvdbyte=4096 service=HTTPS
+CEF:0|VendorA|ProductB|2.0|200|Login Failed|4|src=10.0.0.5 spt=33445 dst=192.168.2.10 dpt=22 proto=TCP act=denied msg=Invalid password deviceExternalId=SRV01 cn1=4
+Oct 25 10:01:00 switch2 system[123]: Configuration changed by admin
+{"timestamp": "2023-10-25T10:01:00Z", "src_ip": "10.0.0.5", "dst_ip": "198.51.100.1", "src_port": 44321, "dst_port": 443, "protocol": "tcp", "action": "allow", "app": "https"}
+%ASA-6-302014: Teardown TCP connection 12345 for outside:203.0.113.5/80 to inside:10.0.0.100/54321 duration 0:00:05 bytes 1024
+2023/10/25 10:02:00,TRAFFIC,192.168.1.20,203.0.113.50,12345,22,tcp,deny,0,0,1,Deny-SSH,ssh,Trust,Untrust,,12347
+date=2023-10-25 time=10:02:00 devname=FGT-Branch devid=FGT123456789 logid=0000000014 type=traffic subtype=local level=warning vd=root srcip=192.168.1.20 srcport=12345 dstip=203.0.113.50 dstport=22 proto=6 action=deny policyid=3 sentbyte=0 rcvdbyte=0 service=SSH
+CEF:0|VendorC|ProductD|3.1|300|File Access|2|src=172.16.0.50 spt=12345 dst=10.0.0.100 dpt=445 proto=TCP act=allowed msg=Read file secret.doc deviceExternalId=FS01 cn1=2
+Oct 25 10:02:00 linux-srv sshd[456]: Failed password for invalid user root from 192.168.1.100 port 33333 ssh2
+{"timestamp": "2023-10-25T10:02:00Z", "src_ip": "192.168.1.20", "dst_ip": "203.0.113.50", "src_port": 12345, "dst_port": 22, "protocol": "tcp", "action": "deny", "app": "ssh"}
+%ASA-6-302015: Built inbound UDP connection 12346 for outside:203.0.113.10/53 (203.0.113.10/53) to inside:10.0.0.50/53 (10.0.0.50/53)
+2023/10/25 10:03:00,TRAFFIC,192.168.1.30,8.8.4.4,54322,53,udp,allow,45,60,2,Allow-DNS,dns,Trust,Untrust,bob,12348

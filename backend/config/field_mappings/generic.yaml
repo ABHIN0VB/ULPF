@@ -1,0 +1,10 @@
+fields:
+  src_ip:
+    source: src_ip
+    type: ip
+  dst_ip:
+    source: dst_ip
+    type: ip
+  action:
+    source: action
+    transform: lowercase

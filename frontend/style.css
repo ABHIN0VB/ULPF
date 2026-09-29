@@ -1,0 +1,311 @@
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: #1c2128;
+    --accent: #00d4aa;
+    --accent-hover: #00b894;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --border: #30363d;
+    --danger: #f85149;
+    --warning: #d29922;
+    --success: #3fb950;
+    --info: #58a6ff;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.top-header {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-header h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.health-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.dot.green {
+    background-color: var(--success);
+    box-shadow: 0 0 8px var(--success);
+    animation: pulse 2s infinite;
+}
+
+.dot.red {
+    background-color: var(--danger);
+    box-shadow: 0 0 8px var(--danger);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar li a:hover, .sidebar li a.active {
+    background-color: var(--bg-card);
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+}
+
+.content-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.page {
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    color: var(--text-secondary);
+}
+
+tr:hover {
+    background-color: var(--bg-secondary);
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.badge.success { background-color: rgba(63, 185, 80, 0.2); color: var(--success); border: 1px solid var(--success); }
+.badge.failure { background-color: rgba(248, 81, 73, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+.badge.unknown { background-color: rgba(139, 148, 158, 0.2); color: var(--text-secondary); border: 1px solid var(--text-secondary); }
+
+.badge.info { background-color: rgba(88, 166, 255, 0.2); color: var(--info); border: 1px solid var(--info); }
+.badge.warning { background-color: rgba(210, 153, 34, 0.2); color: var(--warning); border: 1px solid var(--warning); }
+.badge.critical { background-color: rgba(248, 81, 73, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+
+input, select, textarea, button {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 5px 0;
+}
+
+button {
+    background-color: var(--bg-card);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+}
+
+button.primary {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-card h3 {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.stat-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin: 10px 0;
+}
+
+.json-viewer {
+    background-color: var(--bg-primary);
+    padding: 15px;
+    border-radius: 6px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.json-string { color: #a5d6ff; }
+.json-number { color: #79c0ff; }
+.json-boolean { color: #ff7b72; }
+.json-null { color: var(--text-secondary); }
+.json-key { color: #d2a8ff; }
+
+.log-box {
+    background-color: #000;
+    color: #0f0;
+    padding: 15px;
+    font-family: monospace;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid var(--border);
+    width: 80%;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    color: var(--text-secondary);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+}
+
+.modal-tabs {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 15px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 10px 20px;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; display: flex; overflow-x: auto; }
+    .sidebar ul { display: flex; }
+    .sidebar li a { padding: 10px; }
+}

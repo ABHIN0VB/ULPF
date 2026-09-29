@@ -1,0 +1,28 @@
+source: fwx
+version: "1.0"
+mappings:
+  - from: act
+    to: event.action
+    type: string
+    normalize: lowercase
+  - from: proto
+    to: network.protocol
+    type: string
+    normalize: lowercase
+  - from: src
+    to: source.ip
+    type: ip
+  - from: dst
+    to: destination.ip
+    type: ip
+  - from: spt
+    to: source.port
+    type: integer
+  - from: dpt
+    to: destination.port
+    type: integer
+defaults:
+  event.kind: event
+  event.category: network
+  host.vendor: FWX
+  host.type: firewall

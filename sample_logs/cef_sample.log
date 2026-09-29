@@ -1,0 +1,10 @@
+CEF:0|Security|ThreatManager|1.0|100|Malware Detected|8|src=192.168.1.100 spt=45678 dst=10.0.0.2 dpt=80 proto=TCP act=blocked msg=WannaCry signature match deviceExternalId=FW01 cn1=8
+CEF:0|VendorA|ProductB|2.0|200|Login Failed|4|src=10.0.0.5 spt=33445 dst=192.168.2.10 dpt=22 proto=TCP act=denied msg=Invalid password deviceExternalId=SRV01 cn1=4
+CEF:0|VendorC|ProductD|3.1|300|File Access|2|src=172.16.0.50 spt=12345 dst=10.0.0.100 dpt=445 proto=TCP act=allowed msg=Read file secret.doc deviceExternalId=FS01 cn1=2
+CEF:0|Security|ThreatManager|1.0|101|Port Scan|6|src=198.51.100.5 spt=55555 dst=192.168.1.10 dpt=80 proto=TCP act=blocked msg=SYN flood detected deviceExternalId=FW01 cn1=6
+CEF:0|VendorA|ProductB|2.0|201|Login Success|1|src=10.0.0.5 spt=33446 dst=192.168.2.10 dpt=22 proto=TCP act=allowed msg=Valid password deviceExternalId=SRV01 cn1=1
+CEF:0|VendorC|ProductD|3.1|301|File Modify|5|src=172.16.0.50 spt=12346 dst=10.0.0.100 dpt=445 proto=TCP act=allowed msg=Modified file secret.doc deviceExternalId=FS01 cn1=5
+CEF:0|Security|ThreatManager|1.0|102|SQL Injection|9|src=203.0.113.20 spt=44444 dst=10.0.0.20 dpt=443 proto=TCP act=blocked msg=SQLi payload detected deviceExternalId=WAF01 cn1=9
+CEF:0|VendorA|ProductB|2.0|202|User Logout|1|src=10.0.0.5 spt=33446 dst=192.168.2.10 dpt=22 proto=TCP act=allowed msg=User disconnected deviceExternalId=SRV01 cn1=1
+CEF:0|VendorC|ProductD|3.1|302|File Delete|7|src=172.16.0.50 spt=12347 dst=10.0.0.100 dpt=445 proto=TCP act=denied msg=Attempted to delete protected file deviceExternalId=FS01 cn1=7
+CEF:0|Security|ThreatManager|1.0|103|DDoS Attack|10|src=198.51.100.100 spt=0 dst=192.168.1.1 dpt=0 proto=UDP act=mitigated msg=Volumetric attack mitigated deviceExternalId=FW01 cn1=10

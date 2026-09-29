@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  ulpf-backend:
+    build: ./backend
+    container_name: ulpf-backend
+    ports:
+      - "8000:8000"        # API + Dashboard
+      - "5514:5514/udp"    # Syslog UDP
+      - "5514:5514/tcp"    # Syslog TCP
+    volumes:
+      - ulpf-data:/data
+      - ./backend/config:/app/config  # Hot-reload config
+      - ./backend/parser_engine/plugins:/app/parser_engine/plugins  # Hot-reload plugins
+      - ./frontend:/app/frontend  # Serve frontend
+    environment:
+      - ULPF_DB_PATH=/data/ulpf.db
+      - ULPF_PLUGINS_DIR=/app/parser_engine/plugins
+      - ULPF_CONFIG_DIR=/app/config
+      - ULPF_FRONTEND_DIR=/app/frontend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  ulpf-data:
+    driver: local
+
+networks:
+  default:
+    name: ulpf-network

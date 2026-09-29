@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULPF — Universal Log Pre-processing Framework</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="top-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 1.5em;">🛡️</span>
+            <div>
+                <h1 style="margin: 0; font-size: 1.25em;">ULPF — Universal Log Pre-processing Framework</h1>
+                <div style="font-size: 0.75em; color: var(--text-secondary);">National Technical Research Organisation (NTRO) | PS 26156</div>
+            </div>
+        </div>
+        <div class="health-status">
+            <span id="health-dot" class="dot"></span>
+            <span id="health-text">Checking...</span>
+        </div>
+    </header>
+    
+    <div class="layout">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#overview" class="nav-link" data-page="overview">📊 Overview & Health</a></li>
+                <li><a href="#events" class="nav-link" data-page="events">🔍 Event Search</a></li>
+                <li><a href="#dlq" class="nav-link" data-page="dlq">⚠️ Dead Letter Queue</a></li>
+                <li><a href="#sources" class="nav-link" data-page="sources">🖥️ Perimeter Sources</a></li>
+                <li><a href="#plugins" class="nav-link" data-page="plugins">🔌 Parser Plugins</a></li>
+                <li><a href="#ingest" class="nav-link" data-page="ingest">💉 Ingest Tester</a></li>
+                <li><a href="#benchmark" class="nav-link" data-page="benchmark">⚡ Benchmarks</a></li>
+                <li><a href="#audit" class="nav-link" data-page="audit">📜 Audit Logs</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content-area">
+            <div id="page-overview" class="page"></div>
+            <div id="page-events" class="page" style="display: none;"></div>
+            <div id="page-dlq" class="page" style="display: none;"></div>
+            <div id="page-sources" class="page" style="display: none;"></div>
+            <div id="page-plugins" class="page" style="display: none;"></div>
+            <div id="page-ingest" class="page" style="display: none;"></div>
+            <div id="page-benchmark" class="page" style="display: none;"></div>
+            <div id="page-audit" class="page" style="display: none;"></div>
+        </main>
+    </div>
+
+    <footer>
+        <p>SIH 2026 | NTRO | Problem 26156 | Universal Event Schema v1.0 | 100% Lossless Preservation</p>
+    </footer>
+
+    <!-- Comprehensive Event Details Investigation Modal -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+            <span class="close-modal">&times;</span>
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-target="tab-normalized">Universal Event Schema (UES)</button>
+                <button class="tab-btn" data-target="tab-raw">Forensics & Raw Log (Lossless)</button>
+                <button class="tab-btn" data-target="tab-parsed">Lineage, Quality & SIEM Egress</button>
+            </div>
+            <div id="tab-normalized" class="tab-content active"></div>
+            <div id="tab-raw" class="tab-content"></div>
+            <div id="tab-parsed" class="tab-content"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="overview.js"></script>
+    <script src="events.js"></script>
+    <script src="dlq.js"></script>
+    <script src="sources.js"></script>
+    <script src="plugins.js"></script>
+    <script src="ingest.js"></script>
+    <script src="benchmark.js"></script>
+    <script src="audit.js"></script>
+</body>
+</html>

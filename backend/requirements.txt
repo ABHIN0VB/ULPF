@@ -1,0 +1,9 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+pydantic==2.7.1
+python-multipart==0.0.9
+PyYAML==6.0.1
+aiofiles==23.2.1
+python-dateutil==2.9.0
+requests==2.31.0
+watchdog==4.0.0

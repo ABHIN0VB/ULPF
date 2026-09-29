@@ -1,0 +1,55 @@
+source: cisco_asa
+description: Cisco ASA Firewall Log Field Mappings
+mappings:
+  - from: severity_level
+    to: event.severity
+    type: integer
+  - from: message_id
+    to: event.code
+    type: string
+  - from: action
+    to: event.action
+    type: string
+    normalize: lowercase
+  - from: protocol
+    to: network.protocol
+    type: string
+    normalize: lowercase
+  - from: src_ip
+    to: source.ip
+    type: ip
+  - from: src_port
+    to: source.port
+    type: integer
+  - from: dst_ip
+    to: destination.ip
+    type: ip
+  - from: dst_port
+    to: destination.port
+    type: integer
+  - from: src_interface
+    to: network.direction
+    type: string
+    value_map:
+      outside: inbound
+      inside: outbound
+      dmz: internal
+  - from: connection_id
+    to: event.id
+    type: string
+  - from: action
+    to: event.outcome
+    type: string
+    value_map:
+      built: success
+      teardown: success
+      deny: failure
+      denied: failure
+      dropped: failure
+defaults:
+  event.kind: event
+  event.category: network
+  event.type: connection
+  host.vendor: Cisco
+  host.type: firewall
+  event.dataset: firewall.traffic

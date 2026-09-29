@@ -1,0 +1,49 @@
+source: fortinet
+description: Fortinet FortiGate Log Field Mappings
+mappings:
+  - from: srcip
+    to: source.ip
+    type: ip
+  - from: dstip
+    to: destination.ip
+    type: ip
+  - from: srcport
+    to: source.port
+    type: integer
+  - from: dstport
+    to: destination.port
+    type: integer
+  - from: proto
+    to: network.protocol
+    type: string
+    value_map:
+      "6": tcp
+      "17": udp
+      "1": icmp
+  - from: action
+    to: event.outcome
+    type: string
+    value_map:
+      accept: success
+      deny: failure
+      drop: failure
+      close: success
+  - from: sentbyte
+    to: network.bytes_sent
+    type: integer
+  - from: rcvdbyte
+    to: network.bytes_received
+    type: integer
+  - from: devname
+    to: host.name
+    type: string
+  - from: service
+    to: network.application
+    type: string
+defaults:
+  event.kind: event
+  event.category: network
+  event.type: connection
+  host.vendor: Fortinet
+  host.type: firewall
+  event.dataset: firewall.traffic

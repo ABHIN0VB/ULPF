@@ -1,0 +1,69 @@
+[
+  {
+    "id": "gt-01",
+    "source_id": "fw-perimeter-01",
+    "raw": "%ASA-6-302013: Built outbound TCP connection 12345 for outside:203.0.113.5/80 (203.0.113.5/80) to inside:10.0.0.100/54321 (10.0.0.100/54321)",
+    "expected_parser": "CiscoASAParser",
+    "expected": {
+      "source_ip": "203.0.113.5",
+      "source_port": 80,
+      "destination_ip": "10.0.0.100",
+      "destination_port": 54321,
+      "protocol": "tcp",
+      "outcome": "success"
+    }
+  },
+  {
+    "id": "gt-02",
+    "source_id": "fw-perimeter-01",
+    "raw": "%ASA-4-106023: Deny tcp src outside:203.0.113.50/12345 dst inside:10.0.0.1/443 by access-group \"OUTSIDE_IN\" [0x0, 0x0]",
+    "expected_parser": "CiscoASAParser",
+    "expected": {
+      "source_ip": "203.0.113.50",
+      "source_port": 12345,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 443,
+      "protocol": "tcp",
+      "outcome": "failure"
+    }
+  },
+  {
+    "id": "gt-03",
+    "source_id": "fgt-branch-01",
+    "raw": "date=2026-09-29 time=10:30:00 devname=FGT60E devid=FGT60E1234567890 logid=0000000013 type=traffic subtype=forward level=notice vd=root srcip=192.168.1.10 srcport=54321 srcintf=port1 dstip=8.8.8.8 dstport=53 dstintf=wan1 proto=17 action=accept policyid=1 service=DNS sentbyte=120 rcvdbyte=200",
+    "expected_parser": "FortinetParser",
+    "expected": {
+      "source_ip": "192.168.1.10",
+      "source_port": 54321,
+      "destination_ip": "8.8.8.8",
+      "destination_port": 53,
+      "protocol": "udp",
+      "outcome": "success"
+    }
+  },
+  {
+    "id": "gt-04",
+    "source_id": "siem-collector-01",
+    "raw": "CEF:0|Cisco|ASA|9.14|106023|Deny tcp|5|src=203.0.113.5 spt=12345 dst=10.0.0.100 dpt=443 proto=TCP act=Deny msg=Deny by access-group deviceExternalId=ASA-01",
+    "expected_parser": "CEFParser",
+    "expected": {
+      "source_ip": "203.0.113.5",
+      "source_port": 12345,
+      "destination_ip": "10.0.0.100",
+      "destination_port": 443,
+      "protocol": "tcp",
+      "outcome": "failure"
+    }
+  },
+  {
+    "id": "gt-05",
+    "source_id": "app-server-01",
+    "raw": "{\"timestamp\": \"2026-09-29T10:30:00Z\", \"source_ip\": \"192.168.1.50\", \"dest_ip\": \"10.0.0.1\", \"port\": 8080, \"protocol\": \"http\", \"action\": \"deny\", \"user\": \"badactor\"}",
+    "expected_parser": "JsonParser",
+    "expected": {
+      "source_ip": "192.168.1.50",
+      "destination_ip": "10.0.0.1",
+      "outcome": "failure"
+    }
+  }
+]

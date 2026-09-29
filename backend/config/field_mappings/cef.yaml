@@ -1,0 +1,56 @@
+source: cef
+description: Common Event Format Field Mappings
+mappings:
+  - from: src
+    to: source.ip
+    type: ip
+  - from: spt
+    to: source.port
+    type: integer
+  - from: dst
+    to: destination.ip
+    type: ip
+  - from: dpt
+    to: destination.port
+    type: integer
+  - from: proto
+    to: network.protocol
+    type: string
+  - from: name
+    to: event.action
+    type: string
+  - from: act
+    to: event.action
+    type: string
+  - from: msg
+    to: event.reason
+    type: string
+  - from: deviceExternalId
+    to: host.name
+    type: string
+  - from: cn1
+    to: event.severity
+    type: integer
+  - from: severity
+    to: event.severity
+    type: string
+    value_map:
+      "0": low
+      "1": low
+      "2": low
+      "3": low
+      "4": medium
+      "5": medium
+      "6": medium
+      "7": high
+      "8": high
+      "9": critical
+      "10": critical
+  - from: deviceVendor
+    to: host.vendor
+    type: string
+  - from: deviceProduct
+    to: host.type
+    type: string
+defaults:
+  event.kind: event

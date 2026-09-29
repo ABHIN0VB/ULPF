@@ -1,0 +1,15 @@
+%ASA-6-302013: Built outbound TCP connection 12345 for outside:203.0.113.5/80 (203.0.113.5/80) to inside:10.0.0.100/54321 (10.0.0.100/54321)
+%ASA-4-106023: Deny tcp src outside:203.0.113.50/12345 dst inside:10.0.0.1/443 by access-group "OUTSIDE_IN" [0x0, 0x0]
+%ASA-6-302014: Teardown TCP connection 12345 for outside:203.0.113.5/80 to inside:10.0.0.100/54321 duration 0:00:05 bytes 1024
+%ASA-6-302015: Built inbound UDP connection 12346 for outside:203.0.113.10/53 (203.0.113.10/53) to inside:10.0.0.50/53 (10.0.0.50/53)
+%ASA-6-302016: Teardown UDP connection 12346 for outside:203.0.113.10/53 to inside:10.0.0.50/53 duration 0:00:02 bytes 512
+%ASA-4-713903: IP = 192.168.1.100, Error: IPsec sa lifetime expired.
+%ASA-5-713259: Group = DefaultRAGroup, Username = admin, IP = 192.168.1.100, Session is being torn down. Reason: User Requested
+%ASA-4-106023: Deny udp src outside:198.51.100.22/123 dst inside:10.0.0.1/123 by access-group "OUTSIDE_IN" [0x0, 0x0]
+%ASA-6-302013: Built outbound TCP connection 12347 for outside:203.0.113.12/443 (203.0.113.12/443) to dmz:172.16.0.10/34567 (172.16.0.10/34567)
+%ASA-6-302014: Teardown TCP connection 12347 for outside:203.0.113.12/443 to dmz:172.16.0.10/34567 duration 0:01:15 bytes 4096 TCP FINs
+%ASA-4-106023: Deny icmp src outside:198.51.100.55 dst inside:10.0.0.1 by access-group "OUTSIDE_IN" [0x0, 0x0]
+%ASA-6-113009: AAA retrieved default group policy (DfltGrpPolicy) for user = admin
+%ASA-6-113008: AAA transaction status ACCEPT : user = admin
+%ASA-6-716038: Group <DefaultRAGroup> User <admin> IP <192.168.1.100> Authentication: successful, Session Type: WebVPN.
+%ASA-4-113019: Group = DefaultRAGroup, Username = admin, IP = 192.168.1.100, Session disconnected. Session Type: WebVPN, Duration: 1h:05m:30s, Bytes xmt: 12345, Bytes rcv: 54321, Reason: User Requested

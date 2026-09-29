@@ -1,0 +1,63 @@
+source: palo_alto
+description: Palo Alto Networks PAN-OS Traffic Log Field Mappings
+mappings:
+  - from: src_ip
+    to: source.ip
+    type: ip
+  - from: dst_ip
+    to: destination.ip
+    type: ip
+  - from: src_port
+    to: source.port
+    type: integer
+  - from: dst_port
+    to: destination.port
+    type: integer
+  - from: protocol
+    to: network.protocol
+    type: string
+    normalize: lowercase
+  - from: action
+    to: event.outcome
+    type: string
+    value_map:
+      allow: success
+      deny: failure
+      drop: failure
+      reset-client: failure
+      reset-server: failure
+      reset-both: failure
+  - from: bytes_sent
+    to: network.bytes_sent
+    type: integer
+  - from: bytes_received
+    to: network.bytes_received
+    type: integer
+  - from: packets
+    to: network.packets
+    type: integer
+  - from: rule
+    to: network.rule.name
+    type: string
+  - from: app
+    to: network.application
+    type: string
+  - from: from_zone
+    to: network.zone.source
+    type: string
+  - from: to_zone
+    to: network.zone.destination
+    type: string
+  - from: user
+    to: user.name
+    type: string
+  - from: session_id
+    to: event.id
+    type: string
+defaults:
+  event.kind: event
+  event.category: network
+  event.type: connection
+  host.vendor: Palo Alto Networks
+  host.type: firewall
+  event.dataset: firewall.traffic

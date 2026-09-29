@@ -1,0 +1,35 @@
+source: leef
+description: Log Event Extended Format Field Mappings
+mappings:
+  - from: src
+    to: source.ip
+    type: ip
+  - from: dst
+    to: destination.ip
+    type: ip
+  - from: srcPort
+    to: source.port
+    type: integer
+  - from: dstPort
+    to: destination.port
+    type: integer
+  - from: proto
+    to: network.protocol
+    type: string
+  - from: usrName
+    to: user.name
+    type: string
+  - from: identSrc
+    to: host.ip
+    type: ip
+  - from: cat
+    to: event.category
+    type: string
+  - from: devTime
+    to: '@timestamp'
+    type: string
+  - from: sev
+    to: event.severity
+    type: string
+defaults:
+  event.kind: event

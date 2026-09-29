@@ -1,0 +1,10 @@
+Oct 25 10:00:00 router1 kernel: [ 1234.567890] Interface eth0 link down
+Oct 25 10:01:00 switch2 system[123]: Configuration changed by admin
+Oct 25 10:02:00 linux-srv sshd[456]: Failed password for invalid user root from 192.168.1.100 port 33333 ssh2
+Oct 25 10:03:00 linux-srv sshd[456]: Connection closed by invalid user root 192.168.1.100 port 33333 [preauth]
+Oct 25 10:04:00 router1 kernel: [ 1236.789012] Interface eth0 link up, 1000Mbps, full-duplex
+Oct 25 10:05:00 switch2 system[123]: Interface GigabitEthernet0/1 state changed to up
+Oct 25 10:06:00 linux-srv sudo[789]:   user1 : TTY=pts/0 ; PWD=/home/user1 ; USER=root ; COMMAND=/bin/bash
+Oct 25 10:07:00 linux-srv sudo[789]: pam_unix(sudo:session): session opened for user root by user1(uid=0)
+Oct 25 10:08:00 router1 bgpd[321]: BGP neighbor 10.0.0.2 up
+Oct 25 10:09:00 switch2 system[123]: Fan 1 speed normal

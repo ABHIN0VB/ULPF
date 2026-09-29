@@ -1,0 +1,11 @@
+time,type,src_ip,dst_ip,src_port,dst_port,protocol,action,bytes_sent,bytes_received,packets,rule,app,from_zone,to_zone,user,session_id
+2023/10/25 10:00:00,TRAFFIC,192.168.1.10,8.8.8.8,54321,53,udp,allow,50,50,2,Allow-DNS,dns,Trust,Untrust,johndoe,12345
+2023/10/25 10:01:00,TRAFFIC,10.0.0.5,198.51.100.1,44321,443,tcp,allow,1024,4096,15,Allow-Web,ssl,Trust,Untrust,alice,12346
+2023/10/25 10:02:00,TRAFFIC,192.168.1.20,203.0.113.50,12345,22,tcp,deny,0,0,1,Deny-SSH,ssh,Trust,Untrust,,12347
+2023/10/25 10:03:00,TRAFFIC,192.168.1.30,8.8.4.4,54322,53,udp,allow,45,60,2,Allow-DNS,dns,Trust,Untrust,bob,12348
+2023/10/25 10:04:00,TRAFFIC,10.0.0.10,198.51.100.2,44322,80,tcp,allow,500,2000,8,Allow-Web,web-browsing,Trust,Untrust,charlie,12349
+2023/10/25 10:05:00,TRAFFIC,172.16.0.5,10.0.0.50,33890,3389,tcp,drop,0,0,1,Deny-RDP,ms-rdp,Untrust,Trust,,12350
+2023/10/25 10:06:00,TRAFFIC,192.168.1.40,203.0.113.100,55555,443,tcp,allow,2048,8192,30,Allow-Web,ssl,Trust,Untrust,david,12351
+2023/10/25 10:07:00,TRAFFIC,10.0.0.15,198.51.100.3,55556,8080,tcp,deny,0,0,1,Deny-Proxy,web-browsing,Trust,Untrust,eve,12352
+2023/10/25 10:08:00,TRAFFIC,192.168.1.50,8.8.8.8,54323,53,udp,allow,48,52,2,Allow-DNS,dns,Trust,Untrust,frank,12353
+2023/10/25 10:09:00,TRAFFIC,10.0.0.20,198.51.100.4,44323,443,tcp,allow,1500,6000,20,Allow-Web,ssl,Trust,Untrust,grace,12354

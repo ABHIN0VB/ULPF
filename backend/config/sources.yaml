@@ -1,0 +1,28 @@
+sources:
+  - id: fw-perimeter-01
+    name: Perimeter Firewall 01
+    ip: 192.168.1.1
+    parser: cisco_asa
+    description: Main perimeter Cisco ASA firewall
+    tags: [firewall, perimeter, production]
+    
+  - id: pa-dmz-01
+    name: Palo Alto DMZ Firewall
+    ip: 192.168.1.2
+    parser: palo_alto
+    description: DMZ zone Palo Alto NGFW
+    tags: [firewall, dmz, production]
+    
+  - id: fgt-branch-01
+    name: FortiGate Branch Firewall
+    ip: 10.10.1.1
+    parser: fortinet
+    description: Branch office FortiGate
+    tags: [firewall, branch]
+    
+  - id: siem-collector-01
+    name: SIEM Log Collector
+    ip: 10.0.0.50
+    parser: auto
+    description: Auto-detect format from SIEM collector
+    tags: [siem, collector]
